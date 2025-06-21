@@ -1,0 +1,40 @@
+---
+layout: default
+---
+
+<div class="container">
+  <div class="row">
+  <div class="col-10">
+    {%- if page.title -%}<h2 class="post-list-heading">{{ page.title }}</h2>{%- endif -%}
+  </div>
+  <div class="col-2 text-right pt-3">
+    <a href="{{ "/feed.xml" | relative_url }}"><svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#rss' | relative_url }}"></use></svg></a>
+  </div>
+  </div>
+  {{ content }}
+  <div class="row px-3">
+    <div class="text-center">
+      <button class="btn btn-filter btn-filter-active" id="all">all</button>
+      <button class="btn btn-filter" id="infographics">data vis</button>
+      <button class="btn btn-filter" id="ux">ux</button>
+      <button class="btn btn-filter" id="code">code</button>
+      <button class="btn btn-filter" id="architecture">architecture</button>
+      <button class="btn btn-filter" id="play">play</button>
+      <button class="btn btn-filter" id="exhibition">exhibition</button>
+      <button class="btn btn-filter" id="product-design">product design</button>
+      <button class="btn btn-filter" id="service-design">service design</button>
+    </div>
+  </div>
+  <div id="items" class="row">
+  {% for post in site.categories.project %}
+    <div class="col-lg-4 col-md-6 col-sm-12 p-3 prev {{ post.categories | join: " " }}">
+      <a href="{{ post.url | relative_url }}">
+        <img data-src="{{ site.baseurl }}/{{ post.img }}" class="prev-image lozad" alt="{{ post.title | escape }}">
+        <div class="prev-overlay">
+          <h2 class="prev-text">{{ post.title | escape }}</h2>
+        </div>
+      </a>
+    </div>
+  {%- endfor -%}
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<footer class="container">
+  <data class="u-url" href="{{ "/" | relative_url }}"></data>
+
+    <div class="row">
+      <div class="col-12 mb-3">
+        <hr>
+        find me on<br>
+        {%- include social.html -%}
+      </div>
+    </div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+<script type="text/javascript">
+// initiate lazy loader
+const observer = lozad();
+observer.observe();
+
+// filter items
+var $btns = $('.btn-filter').click(function() {
+  if (this.id == 'all') {
+    $('#items > div').fadeIn(450);
+  } else {
+    var $el = $('.' + this.id).fadeIn(450);
+    $('#items > div').not($el).hide();
+  }
+  $btns.removeClass('btn-filter-active');
+  $(this).addClass('btn-filter-active');
+})
+
+// auto-resize videos with correct aspect ratio
+$(function() {
+
+    var $allVideos = $("iframe[src^='https://player.vimeo.com'], iframe[src^='https://www.youtube.com'], iframe[src^='https://docs.google.com'], iframe[src^='https://marvelapp.com'], object, embed"), 
+    $fluidEl = $("figure");
+
+  $(window).resize(function() {
+
+    var newWidth = $fluidEl.width();
+    $allVideos.each(function() {
+      var $el = $(this);
+      $el.attr("width", newWidth);
+      if ($el.attr("src").includes("docs.google.com")) {
+        $el.attr("height", ( newWidth * $el.data("aspectratio") ) + 29);
+      } else {
+        $el.attr("height", newWidth * $el.data("aspectratio"));
+      }
+    });
+
+  }).resize();
+
+});
+</script>

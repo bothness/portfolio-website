@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      {%- if page.title -%}<h2 class="post-list-heading">{{ page.title }}</h2>{%- endif -%}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-9 col-md-10 col-sm-12">
+      {{ content }}
+    </div>
+  </div>
+</div>
+

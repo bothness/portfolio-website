@@ -1,0 +1,33 @@
+---
+layout: default
+---
+
+<div class="container">
+  <div class="row">
+  <div class="col-12">
+    {%- if page.title -%}<h2 class="post-list-heading">{{ page.title }}</h2>{%- endif -%}
+  </div>
+  </div>
+  {{ content }}
+  <div class="row px-3">
+    <div class="text-center">
+      <button class="btn btn-filter btn-filter-active" id="all">all</button>
+      <button class="btn btn-filter" id="publication">publication</button>
+      <button class="btn btn-filter" id="video">video</button>
+      <button class="btn btn-filter" id="award">award</button>
+      <button class="btn btn-filter" id="talk">talk</button>
+    </div>
+  </div>
+  <div id="items" class="row">
+  {% for item in site.data.world %}
+    <div class="col-lg-4 col-md-6 col-sm-12 p-3 prev {{ item.category }}">
+      <a href="{{ item.url | relative_url }}" target="_blank">
+        <img data-src="{{ site.baseurl }}/{{ item.img }}" class="prev-image lozad" alt="{{ item.title | escape }}">
+        <div class="prev-overlay">
+          <h2 class="prev-text">{{ item.title | escape }}</h2>
+        </div>
+      </a>
+    </div>
+  {%- endfor -%}
+  </div>
+</div>

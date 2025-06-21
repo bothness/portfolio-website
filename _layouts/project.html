@@ -1,0 +1,65 @@
+---
+layout: default
+---
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+<div class="container">
+  <div class="row">
+    <div class="col">
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+        {{ page.year }}
+      </time>
+      {%- if page.author -%}
+        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author }}</span></span>
+      {%- endif -%}</p>
+  </header>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-7 col-md-9 col-sm-12">
+      {{ content }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-9 col-md-10 col-sm-12" itemprop="articleBody">
+      {%- if page.images -%}
+      {% for image in page.images %}
+      {% if image.url[1] %}
+      <div class="row imggrid">
+        {% for url in image.url %}
+        <div class="col-6">
+          <img data-src="{{ site.baseurl }}/assets/img/projects/{{ url }}" class="img-fluid shadow lozad">
+        </div>
+        {%- endfor -%}
+      </div>
+      {% elsif image.url contains "youtube.com" %}
+      <figure><iframe src="{{ image.url }}?autoplay=1&loop=1&modestbranding=1" data-aspectratio="{{ image.aspect }}" frameborder=0 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="shadow"></iframe></figure>
+      {% elsif image.url contains "docs.google.com" %}
+      <figure><iframe src="{{ image.url }}/embed?start=false&loop=false&delayms=5000" data-aspectratio="{{ image.aspect }}" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe></figure>
+      {% elsif image.url contains "marvelapp.com" %}
+      <figure><iframe src="{{ image.url }}?emb=1&iosapp=false&frameless=false" data-aspectratio="{{ image.aspect }}" allowTransparency="true" frameborder="0"></iframe></figure>
+      {%- else -%}
+      <img data-src="{{ site.baseurl }}/assets/img/projects/{{ image.url }}" class="figure-img img-fluid shadow lozad">
+      {%- endif -%}
+        {% if image.caption %}
+        <figcaption class="figure-caption">{{ image.caption | markdownify }}</figcaption>
+        {% endif %}
+      {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-9 col-md-10 col-sm-12">
+  {%- if site.disqus.shortname -%}
+    {%- include disqus_comments.html -%}
+  {%- endif -%}
+    </div>
+  </div>
+</div>
+<a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+</article>

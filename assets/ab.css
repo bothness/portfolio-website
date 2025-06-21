@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+body {
+  background-color: #eee;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.prev-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.prev-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: rgb(255,192,0,0.65);
+}
+
+.prev:hover .prev-overlay {
+  opacity: 1;
+}
+
+.prev-text {
+  color: white;
+  font-weight: 900;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+
+.social-media-list a:hover {
+  text-decoration: none;
+}
+
+.social-media-list a:hover .username {
+  text-decoration: underline;
+}
+
+.svg-icon {
+  width: 16px;
+  height: 19px;
+  display: inline-block;
+  fill: #828282;
+  padding-top: 3px;
+  padding-right: 0;
+  vertical-align: text-top;
+}
+
+.social-media-list li {
+  display: inline-block;
+  padding-right: 10px;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 768px) {
+    .mypic {
+        float: none !important;
+        margin-left: 0 !important;
+    }
+}
+
+.social-media-list {
+  list-style: none;
+  margin-left: 0;
+  padding: 0;
+  display: inline;
+}
+
+.btn {
+  font-weight: 600;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 5px;
+  color: #333;
+  position: relative;
+  padding: 5px;
+}
+
+.btn-filter:hover {
+  color: #999;
+}
+
+.btn-filter {
+  background-color: rgba(255, 255, 255, 0);
+  border-color: rgba(0, 0, 0);
+  border-width: 0;
+  border-style: solid;
+  font-size: 0.8em;
+  margin-top: 4px;
+}
+
+.btn-filter-active {
+  background-color: #333;
+  color: #fff;
+}
+
+
+h4 + p {
+  padding-top: 15px;
+}
+
+.nav-link {
+  padding-bottom: 3px !important;
+}
+
+a.nav-link:hover {
+  border-bottom:1px solid #ccc;
+}
+
+.navbar-nav li a.nav-active {
+  color: #000 !important;
+  font-weight: 600;
+  border-bottom-width: 1px;
+  border-color: #000;
+  border-bottom:1px solid #000;
+}
+
+h5 a, h5 a:hover {
+  color: #000;
+  font-weight: 600;
+}
+
+.imggrid {
+  margin-bottom: 3px;
+}
+
+.imggrid div {
+  padding-top: 25px;
+  padding-bottom: 5px;
+}
+
+.figure-img {
+  margin-top: 25px;
+}
+
+figure {
+  margin-top: 25px;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 5px;
+}
